@@ -8,13 +8,14 @@
       <PostList :posts="posts" />
     </div>
     <div v-else>
-      <p>Loading data...</p>
+      <Spinner />
+      <!-- <p>Loading data...</p> -->
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import Spinner from "../components/Spinner.vue";
 import getPosts from "../composables/getPosts.js";
 import PostList from "../components/PostList.vue";
 
@@ -24,6 +25,6 @@ export default {
 
     return { posts, error };
   },
-  components: { PostList },
+  components: { PostList, Spinner },
 };
 </script>
