@@ -31,8 +31,8 @@ export default {
     });
 
     watchEffect(() => {
-      //run at beginning for once
-      console.log("watch effect function ran");
+      //now it runs everytime when search value changes
+      console.log("watch effect function ran", search.value);
     });
 
     const filteredNames = computed(() => {
