@@ -1,5 +1,9 @@
 <template>
-  <router-view/>
+  <nav>
+    <router-link to="/">Home</router-link>
+    <router-link :to="{ name: 'Create' }">Add a Post</router-link>
+  </nav>
+  <router-view />
 </template>
 
 <style>
