@@ -20,7 +20,8 @@ export default {
     let age = 30;
 
     const handleClick = (e) => {
-      console.log(p);
+      console.log(p, p.value);
+      p.value.classList.add("test");
     };
 
     return { name, age, handleClick, p };
