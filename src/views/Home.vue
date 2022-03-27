@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    {{ name }}
+    {{ names }}
+    <p>{{ filteredNames }}</p>
   </div>
 </template>
 
@@ -10,11 +11,13 @@ import { ref, computed } from "vue";
 export default {
   name: "Home",
   setup() {
-    const name = computed(() => {
-      return "mike";
+    const names = ref(["mike", "kevin", "mario", "yoshi", "liugi"]);
+
+    const filteredNames = computed(() => {
+      return names.value.filter((name) => name.length > 4);
     });
 
-    return { name };
+    return { names, filteredNames };
   },
 };
 </script>
