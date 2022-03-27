@@ -15,17 +15,17 @@ export default {
     console.log(this); //'this' is null in setup
 
     const p = ref(null);
+    console.log(p, p.value);
 
-    let name = "mario";
-    let age = 30;
+    let name = "mario"; //by default, this is not reactive variable
+    const age = ref(30); //now this variable is reactive
 
     const handleClick = (e) => {
-      console.log(p, p.value);
-      p.value.classList.add("test");
-      p.value.textContent = "hello mike";
+      name = "mike"; //this wont change the html
+      age.value = 20; // we can change the value here
     };
 
-    return { name, age, handleClick, p };
+    return { name, age, handleClick, p }; //only after return you can associate with the DOM
   },
   mounted() {
     console.log("mounted");
