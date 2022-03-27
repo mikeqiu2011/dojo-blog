@@ -15,31 +15,12 @@
 
 <script>
 import { ref } from "vue";
+import getPosts from "../composables/getPosts.js";
 import PostList from "../components/PostList.vue";
 
 export default {
   setup() {
-    const posts = ref([]);
-    const error = ref(null);
-    const uri = "http://localhost:3000/posts";
-
-    const load = async () => {
-      try {
-        let data = await fetch(uri);
-        // console.log(data);
-
-        if (!data.ok) {
-          throw Error("no data available");
-        }
-        posts.value = await data.json();
-        // console.log(posts.value);
-      } catch (err) {
-        console.log(err);
-        error.value = err.message;
-      }
-    };
-
-    load();
+    const { posts, error } = getPosts();
 
     return { posts, error };
   },
