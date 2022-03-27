@@ -1,7 +1,15 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <PostList :posts="posts" />
+    <div v-if="error" class="error">
+      {{ error }}
+    </div>
+    <div v-if="posts.length">
+      <PostList :posts="posts" />
+    </div>
+    <div v-else>
+      <p>Loading data...</p>
+    </div>
   </div>
 </template>
 
@@ -33,7 +41,7 @@ export default {
 
     load();
 
-    return { posts };
+    return { posts, error };
   },
   components: { PostList },
 };
