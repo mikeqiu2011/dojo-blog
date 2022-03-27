@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, watchEffect } from "vue";
 export default {
   name: "Home",
   setup() {
@@ -27,7 +27,12 @@ export default {
     ]);
 
     watch(search, () => {
-      console.log(search);
+      console.log(search.value);
+    });
+
+    watchEffect(() => {
+      //run at beginning for once
+      console.log("watch effect function ran");
     });
 
     const filteredNames = computed(() => {
