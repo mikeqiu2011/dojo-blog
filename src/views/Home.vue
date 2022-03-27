@@ -22,6 +22,7 @@ export default {
     const handleClick = (e) => {
       console.log(p, p.value);
       p.value.classList.add("test");
+      p.value.textContent = "hello mike";
     };
 
     return { name, age, handleClick, p };
