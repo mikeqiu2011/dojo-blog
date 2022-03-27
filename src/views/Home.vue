@@ -3,6 +3,8 @@
     <h1>Home</h1>
     <p ref="p">My name is {{ name }} and my age is {{ age }}</p>
     <button @click="handleClick">click me</button>
+    <input type="text" v-model="desc" />
+    <p>{{ desc }}</p>
   </div>
 </template>
 
@@ -14,21 +16,16 @@ export default {
     console.log("setup");
     console.log(this); //'this' is null in setup
 
-    const p = ref(null);
-    console.log(p, p.value);
-
-    let name = "mario"; //by default, this is not reactive variable
+    const name = ref("mario"); //by default, this is not reactive variable
     const age = ref(30); //now this variable is reactive
+    const desc = ref("description");
 
     const handleClick = (e) => {
-      name = "mike"; //this wont change the html
+      name.value = "mike"; //this wont change the html
       age.value = 20; // we can change the value here
     };
 
-    return { name, age, handleClick, p }; //only after return you can associate with the DOM
-  },
-  mounted() {
-    console.log("mounted");
+    return { name, age, desc, handleClick }; //only after return you can associate with the DOM
   },
 };
 </script>
