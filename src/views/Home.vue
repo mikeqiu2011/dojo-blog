@@ -1,30 +1,24 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p ref="p">My name is {{ name }} and my age is {{ age }}</p>
-    <button @click="handleClick">click me</button>
-    <input type="text" v-model="name" />
-    <button @click="age++">increase age</button>
+    <h3>using refs</h3>
+    <p>{{ ninjaOne.name }} - {{ ninjaOne.age }}</p>
+    <button @click="updateNinjaOne">update</button>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 export default {
   name: "Home",
   setup() {
-    console.log("setup");
-    console.log(this); //'this' is null in setup
+    const ninjaOne = ref({ name: "mario", age: 30 });
 
-    const name = ref("mario"); //by default, this is not reactive variable
-    const age = ref(30); //now this variable is reactive
-
-    const handleClick = (e) => {
-      name.value = "mike"; //this wont change the html
-      age.value = 20; // we can change the value here
+    const updateNinjaOne = () => {
+      ninjaOne.value.age = 40;
     };
 
-    return { name, age, handleClick }; //only after return you can associate with the DOM
+    return { ninjaOne, updateNinjaOne };
   },
 };
 </script>
