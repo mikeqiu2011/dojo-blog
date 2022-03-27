@@ -2,7 +2,7 @@
   <div class="post">
     <h3>{{ post.title }}</h3>
     <p>{{ snippet }}</p>
-    <p>this is in single post</p>
+    <span v-for="tag in post.tags" :key="tag"> #{{ tag }} </span>
   </div>
 </template>
 
@@ -21,4 +21,7 @@ export default {
 </script>
 
 <style>
+/* .post span {
+    justify-content: ;
+} */
 </style>
