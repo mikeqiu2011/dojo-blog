@@ -10,6 +10,9 @@
 <script>
 export default {
   props: ["posts"],
+  setup(props) {
+    console.log(props.posts);
+  },
 };
 </script>
 
