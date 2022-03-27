@@ -6,11 +6,14 @@
     <h3>{{ post.title }}</h3>
     <p class="pre">{{ post.body }}</p>
   </div>
-  <div v-else>Loading data</div>
+  <div v-else>
+    <Spinner />
+  </div>
 </template>
 
 <script>
 import getPost from "../composables/getPost";
+import Spinner from "../components/Spinner.vue";
 export default {
   props: ["id"],
   setup(props) {
@@ -18,6 +21,7 @@ export default {
 
     return { post, error };
   },
+  components: { Spinner },
 };
 </script>
 
