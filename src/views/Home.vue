@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 export default {
   name: "Home",
   setup() {
@@ -26,7 +26,12 @@ export default {
       "andrew",
     ]);
 
+    watch(search, () => {
+      console.log(search);
+    });
+
     const filteredNames = computed(() => {
+      console.log("computed func called");
       return names.value.filter((name) => name.includes(search.value));
     });
 
