@@ -14,10 +14,14 @@
 <script>
 import getPost from "../composables/getPost";
 import Spinner from "../components/Spinner.vue";
+import { useRoute } from "vue-router";
+
 export default {
   props: ["id"],
   setup(props) {
-    const { post, error } = getPost(props.id);
+    const route = useRoute();
+    console.log(route);
+    const { post, error } = getPost(route.params.id);
 
     return { post, error };
   },
