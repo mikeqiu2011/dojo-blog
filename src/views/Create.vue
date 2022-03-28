@@ -15,6 +15,7 @@
 
 <script>
 import { ref } from "@vue/reactivity";
+import { useRouter } from "vue-router";
 import createPost from "../composables/createPost";
 
 export default {
@@ -23,6 +24,7 @@ export default {
     const body = ref("");
     const tag = ref("");
     const tags = ref([]);
+    const router = useRouter();
 
     const create = () => {
       let post = {
@@ -32,6 +34,7 @@ export default {
       };
       createPost(post);
       console.log("post created");
+      router.push({ name: "Home" });
     };
 
     const addTag = (e) => {
