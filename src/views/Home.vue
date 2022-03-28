@@ -22,6 +22,7 @@ import PostList from "../components/PostList.vue";
 export default {
   setup() {
     const { posts, error } = getPosts();
+    console.log(posts.value);
 
     return { posts, error };
   },
