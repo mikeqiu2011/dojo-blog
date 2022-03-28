@@ -1,7 +1,7 @@
 <template>
   <div class="tags">
     <div v-if="error">{{ error }}</div>
-    <div v-if="tagPosts.length">
+    <div v-if="posts.length">
       <PostList :posts="tagPosts" />
     </div>
     <div v-else>
@@ -27,7 +27,7 @@ export default {
       return posts.value.filter((post) => post.tags.includes(route.params.tag));
     });
 
-    return { tagPosts, error };
+    return { tagPosts, posts, error };
   },
   components: { Spinner, PostList },
 };

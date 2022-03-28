@@ -6,10 +6,10 @@
     </div>
     <div v-if="posts.length">
       <PostList :posts="posts" />
+      <TagCloud :posts="posts" />
     </div>
     <div v-else>
       <Spinner />
-      <!-- <p>Loading data...</p> -->
     </div>
   </div>
 </template>
@@ -18,6 +18,7 @@
 import Spinner from "../components/Spinner.vue";
 import getPosts from "../composables/getPosts.js";
 import PostList from "../components/PostList.vue";
+import TagCloud from "../components/TagCloud.vue";
 
 export default {
   setup() {
@@ -26,7 +27,7 @@ export default {
 
     return { posts, error };
   },
-  components: { PostList, Spinner },
+  components: { PostList, Spinner, TagCloud },
 };
 </script>
 <style>
