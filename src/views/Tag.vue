@@ -25,9 +25,7 @@ export default {
     const route = useRoute();
 
     const tagPosts = computed(() => {
-      return posts.value.filter((post) => {
-        return post.tags.includes(route.params.tag);
-      });
+      return posts.value.filter((post) => post.tags.includes(route.params.tag));
     });
 
     return { tagPosts, error };
