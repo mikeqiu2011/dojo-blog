@@ -10,7 +10,7 @@ const getPost = (id) => {
         try {
             const res = await db.collection('posts').doc(id).get()
             // const res = await db.collection('posts').get()
-            post.value = res.data()
+            post.value = { ...res.data(), id: res.id }
             console.log(post.value);
         } catch (err) {
             console.log(err);
