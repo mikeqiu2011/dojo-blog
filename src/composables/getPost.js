@@ -9,9 +9,13 @@ const getPost = (id) => {
     const load = async () => {
         try {
             const res = await db.collection('posts').doc(id).get()
-            // const res = await db.collection('posts').get()
+            console.log(res);
+
+            if (!res.exists) {
+                throw Error('post does not exist')
+            }
+
             post.value = { ...res.data(), id: res.id }
-            console.log(post.value);
         } catch (err) {
             console.log(err);
             error.value = err.message;
