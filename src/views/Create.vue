@@ -17,6 +17,7 @@
 import { ref } from "@vue/reactivity";
 import { useRouter } from "vue-router";
 import createPost from "../composables/createPost";
+import { timestamp } from "../firebase/config";
 
 export default {
   setup() {
@@ -31,6 +32,7 @@ export default {
         title: title.value,
         body: body.value,
         tags: tags.value,
+        createdAt: timestamp(),
       };
       createPost(post);
       console.log("post created");
