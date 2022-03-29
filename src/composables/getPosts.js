@@ -8,8 +8,7 @@ const getPosts = () => {
     const load = async () => {
         try {
             const res = await projectFirestore.collection('posts').get()
-            console.log(res.docs);
-            // console.log(projectFirestore);
+            posts.value = res.docs.map(doc => doc.data())
 
         } catch (err) {
             console.log(err);
