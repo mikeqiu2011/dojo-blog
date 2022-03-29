@@ -1,5 +1,6 @@
 
 import { ref } from "vue"
+import db from "../firebase/config";
 
 const getPost = (id) => {
     const post = ref(null);
@@ -7,17 +8,10 @@ const getPost = (id) => {
 
     const load = async () => {
         try {
-            //simulate delay
-            await new Promise(resolve => { setTimeout(resolve, 1000) })
-
-            let data = await fetch("http://localhost:3000/posts/" + id);
-            // console.log(data);
-
-            if (!data.ok) {
-                throw Error("no data available");
-            }
-            post.value = await data.json();
-            // console.log(posts.value);
+            const res = await db.collection('posts').doc(id).get()
+            // const res = await db.collection('posts').get()
+            post.value = res.data()
+            console.log(post.value);
         } catch (err) {
             console.log(err);
             error.value = err.message;
