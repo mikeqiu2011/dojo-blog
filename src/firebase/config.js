@@ -15,6 +15,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 //init firestore service
-const projectFirestore = firebase.firestore()
+const db = firebase.firestore()
 
-export default projectFirestore 
+export default db  
