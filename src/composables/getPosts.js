@@ -11,9 +11,7 @@ const getPosts = () => {
             posts.value = res.docs.map(doc => {
                 return {
                     id: doc.id,
-                    title: doc.data().title,
-                    body: doc.data().body,
-                    tags: doc.data().tags
+                    ...doc.data()
                 }
             })
             console.log(posts.value);
