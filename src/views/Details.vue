@@ -27,14 +27,14 @@ export default {
     console.log(route);
     const { post, error } = getPost(route.params.id);
 
-    const handleDelete = () => {
-      // await db.collection("posts").doc(route.params.id).delete();
-      // router.push({ name: "Home" });
-      db.collection("posts")
-        .doc(route.params.id)
-        .delete()
-        .then(router.push({ name: "Home" }))
-        .catch((err) => console.log(err));
+    const handleDelete = async () => {
+      await db.collection("posts").doc(route.params.id).delete();
+      router.push({ name: "Home" });
+      // db.collection("posts")
+      //   .doc(route.params.id)
+      //   .delete()
+      //   .then(router.push({ name: "Home" }))
+      //   .catch((err) => console.log(err));
     };
 
     // deletePost(route.params.id);
