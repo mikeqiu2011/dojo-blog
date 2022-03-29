@@ -4,6 +4,7 @@ import 'firebase/firestore'
 const firebaseConfig = {
     apiKey: "AIzaSyA9-vXIwCXj-nG7ioC61LOEgYLB_Fymzlo",
     authDomain: "udemy-vue-firebase-sites-a263f.firebaseapp.com",
+    // databaseURL: "https://udemy-vue-firebase-sites-a263f.firebaseio.com",
     projectId: "udemy-vue-firebase-sites-a263f",
     storageBucket: "udemy-vue-firebase-sites-a263f.appspot.com",
     messagingSenderId: "419966689121",
@@ -16,4 +17,4 @@ firebase.initializeApp(firebaseConfig)
 //init firestore service
 const projectFirestore = firebase.firestore()
 
-export { projectFirestore }
+export default projectFirestore 

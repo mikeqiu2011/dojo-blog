@@ -1,4 +1,4 @@
 # dojo-blog
 
 ## firebase
-    npm i firebase@8.0
+    npm i firebase@8.10
