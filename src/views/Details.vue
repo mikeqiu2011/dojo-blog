@@ -9,21 +9,30 @@
   <div v-else>
     <Spinner />
   </div>
+  <button @click="handleDelete">delete post</button>
 </template>
 
 <script>
 import getPost from "../composables/getPost";
 import Spinner from "../components/Spinner.vue";
 import { useRoute } from "vue-router";
+import deletePost from "../composables/deletePost";
+import { useRouter } from "vue-router";
 
 export default {
   props: ["id"],
-  setup(props) {
+  setup() {
     const route = useRoute();
+    const router = useRouter();
     console.log(route);
     const { post, error } = getPost(route.params.id);
 
-    return { post, error };
+    const handleDelete = () => {
+      deletePost(route.params.id);
+      router.push({ name: "Home" });
+    };
+
+    return { post, error, handleDelete };
   },
   components: { Spinner },
 };
